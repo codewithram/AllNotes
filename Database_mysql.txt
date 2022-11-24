@@ -1,0 +1,472 @@
+Database:-
+--------------
+Microsoft SQL Server:
+1.Microsoft SQL Server-2019-(server)
+2.Microsoft SQL server Management studio (ssms)-2018 (software with GUI)
+
+Mysql Oracle, Msaccess, Mssql:
+------------------------------------------
+
+DBMS:DBMS stand for database management system. IT provides concept to store and manage data for future  use. In DBMS 
+datacan be managed in many formate like file formate, table  json formate, key value formate etc.
+
+RDBMS: RDBMS stands for relational database management system. Here data is stored in form of table (Rows and column).
+
+Benefits to use RDBMS over file system is it is :
+Easy to use
+Easy to access
+Easy to update, Easy to search and particular data in large, Reundancy free data etc.
+Many application of RDBMS is present in market where you can store and manipulate the data, like MSACCESS, MYSQL,
+ MSSQL, ORACLE ETC.
+
+RDBMS data is cept in form of table are collection of logically relate records.
+----------------------
+to perform any action in any RDBMS software the langauge that is usd in sql(Strutured suery langauge).
+
+Terminology of RDBMS:
+
+Schema:- structure of table
+Fields :- Columns
+Records :- Rows
+Tuples:- Rows
+-------------------------
+
+SQL: SQL stands for Strutured Query Langauge. IT is a langauge that is used to perform any peration in RDBMS. it provides pre-definds syntax of queries that is used for transactions in database.
+So SQL queries are used to store, manipulate and retrieve any part of data in RDBMS.
+
+-------------------------------------------------------------------------------
+
+According to working sql queries are divied into 4 part,
+
+SQL:
+1. DDL(data defination langauge)
+	a. create
+		Example:-create database techpile_db
+	b. Alter
+	c. Drop
+	d. Truncate
+2. DML(data manipulate langauge)
+	a. insert
+	b. delete
+	c. update
+	d. select
+3. DCL(data control langauge)
+	a. Grant 
+	b. rename
+	c. Revoke
+4. TCL(Transaction control langauge)
+	a. Commit
+	b. Rollback
+	c. savepoint
+	
+RDBMS:
+
+database: database is collection of tables where tables are collection of rows and columns. table contains logically related records.
+Database
+.....>
+Tables
+..>
+Records
+
+1. Create:-				Table=schema(structure of the table) + Recprds
+								(DDL) 						 + DML
+								
+create is ddl commands IT is used to create database, tables, views, functions, stored procedures, triggers etc.
+
+Syntax  to create database:-
+	create database database_name;
+	
+Syntax to create tables:-
+	create table table_name
+	(
+	column_name data_type(size),
+	column_name data_type(size),
+	column_name data_type(size),
+	.
+	.
+	.
+	
+	);
+	
+Data type: data type defines type of value that a column may hold.
+
+(4 byte memory store)
+1. smallint
+2. int
+3. bigint
+4. float
+
+5. Date
+6. Datetime
+7. Char():- fixed lenght char sequence
+8. Varchar():-  variable lenght char sequence
+9. Text
+10. Nchar()
+11. Nvarchar()
+12. Monay
+13. bit
+14. ntext
+-----------------------------
+create a table to store students records with following columns:
+Rollno 
+Name
+Fee
+Course
+Mobno
+emailid
+	
+-----------------------------------------------------------------------------------------------------------
+1. check
+2. delault
+3. unique key
+4. primary key
+5. foreign key 
+6. Not null
+
+Identity() , Auto increment
+-------------------------------------------------------27/10/2022--------------------------------------------------------------
+
+
+Insert:-
+-------
+syntax:-
+	insert all value of table:
+	insert into table_name values(value1, value2,value3,..........);
+	syntax to to add values in specific columns:
+	insert into table(column_name1,column_name2............) values(value1,value2,............);
+	
+	insert multiple record at once:
+	insert into table_name values(),(),(),.............;
+	
+	bulk insert:-
+	insert into table_name(column_name1,column_name2,.......,column_name_n) values(),(),().........;
+	
+	
+	---------------------
+	select command:-select is a DML command it is used to retrieve any part of data from large amount o data from database.
+	select is the maximum used query of sql.
+	
+	Syntax:
+	select column_name(s) from table_name;
+	example:-select only one column
+		select fee from student;
+		select name from student;
+		select course from student;
+	Example:-select all column
+		select * from table_name;
+		
+	select specific rows with condition:-
+	select column_name(s) from table_name where <condition>
+	
+	Operaotr in condition:
+	
+	=
+	>
+	<
+	>=
+	<=
+	<> is not equal to
+	and 
+	or 
+	in
+	not in
+	is null
+	in not null
+	Between
+	Like
+	
+
+
+select * from student where course='diploma(c.s)' and (regid>5000 and rgid<10000);
+select * from student where between 5000 and 10000;
+select * from student where ficture is null;
+select * from student where ficture is null and fathername is not null;
+
+
+------------------------------------------------------------------------------------------
+
+1.	Select all record stored in table customers
+	ans Query :- select *from customer
+2.	Select only first_name, last_name, email_id of all customers
+	ans Query :-select first_name,last_name,email_id from customer
+3.	Select all records of those customers who has no mobile number
+	ans Query :-select sn,first_name,last_name,email_id,gender,reg_date from customer  
+4.	Select all customer records in ascending order of first_name and last_name
+	ans Query :-select * from customer order by  first_name,last_name asc
+5.	Select those customer records who registered in october month
+	ans Query :-select * from customer where reg_date='2022-10-15'
+
+1.	Select total items sold February month
+	ans Query :-select count(order_item) from orders where order_date='2022-02-27'
+2.	Select total purchase amount of  Priya dutt
+	ans Query :-select sum(order_total) from orders where cust_id='priya1@gmail.com'
+3.	Select all order details where total amount is greater than 1000
+	ans Query :-select * from orders where order_total>1000
+4.	Select all order details where purchase amount is within 500 to 1500
+	ans Query :-select * from orders where order_total between 500 and 1500
+5.	Select all order details where purchase amount is within 500 to 1500 of Priya, Rohan and Siya
+	ans Query :-select * from orders where cust_id in 	('priya1@gmail.com','sohan22@gmail.com','siya123@gmail.com') 
+	and order_total between 500 and 1500
+6.	Select order details of all customers with one more column named order_type .
+	If total purchase items is less than 3 then show less quantity otherwise show good quantity
+	ans Query :-select cust_id, case when order_item<3 then 'less' when order_item>=3 then 'good' end from orders
+7.	Select orders of all customers except priya
+	ans Query :-select * from orders where cust_id='priya1@gmail.com'
+
+
+
+----------------------------------------------------------01/11/2022-----------------------------------------------------------------------
+Inner Join:-
+
+syntax:- select column_name(s) from table_name first_table_name inner join second_table_name on
+		table_name.column_name=table_name.column_name
+
+Right Join:
+
+Syntax:- select column_name(s) from table_name first_table_name right join second_table_name on 						table_name.column_name=table_name.column_name
+
+
+
+
+
+
+----------------------------------------------------------------------------------
+use college
+select * from tbl_student
+select * from teachers
+select * from Fee_Payment
+
+select tbl_student.sr,tbl_student.name,tbl_student.mobno,tbl_student.email_id,tbl_student.total_fee,teachers.name,
+tbl_student.branch,tbl_student.year from tbl_student left join teachers on tbl_student.Classroom_teacher=teachers.sr
+
+select tbl_student.sr,tbl_student.name,tbl_student.mobno,tbl_student.email_id,tbl_student.total_fee,teachers.name,
+tbl_student.branch,tbl_student.year,Fee_Payment.amount,Fee_Payment.mode,Fee_Payment.fee_Date
+from tbl_student left join Fee_Payment on tbl_student.Email_id=Fee_Payment.user_id
+left join teachers on tbl_student.Classroom_teacher=Teachers.sr
+
+
+use amazome
+select * from customer
+select * from orders
+
+select * from address
+
+select customer.first_name,customer.last_name,customer.mob_no,orders.order_date,orders.order_total,orders.order_item,
+address.full_add from customer right join orders on customer.email_id=orders.cust_id
+left join address on orders.address=address.add_id
+
+select orders.order_nu,orders.cust_id,orders.order_date,orders.order_total,orders.order_date,
+address.cust_id,address.Full_add,address.Landmark,address.add_type,address.pincode
+from orders left join Address on orders.address=address.Add_id
+
+
+
+use amazome
+select * from customer
+select * from orders
+
+select max(order_total) from orders where order_total<>(select max(order_total) from orders)
+select * from orders where order_total=(select max(order_total)-2 from orders)
+
+select top 2 * from orders order by order_total desc 
+
+----------------------------------------------------02/11/2022-------------------------------------------------------------
+
+Row_number(): row_number() is used to provide a dynamic generated serial number to every of table.
+Row_number() function adds a column to table with a unique serial number fro every records. row_number() is used with  over keyword.
+that means numbering is alwysapplied based  on the descending/ascending order of values of any column of table.
+ 
+ Example:-
+
+use college
+select*from tbl_student
+select*from Fee_Payment
+
+select ROW_NUMBER() over(order by tbl_student.name) as sr,
+tbl_student.name,tbl_student.Mobno,tbl_student.Email_id,Fee_Payment.amount from tbl_student
+left join Fee_Payment on tbl_student.email_id=Fee_Payment.User_id 
+
+select ROW_NUMBER() over(order by sum(amount) desc) as sn,user_id,sum(amount) as total from Fee_Payment
+ group by user_id having sum(amount)>=12000
+
+CTC:-
+	A common table expression,also called as cte in sort form, is a  temporary named result set that yu can reference within a select 
+,insert,update or delete statement the cte  can also be used in a View.
+
+
+Exmaple: 	 with fee(sr,total) as 
+			(select ROW_NUMBER() over (order by total_fee desc) as sr, total_fee as total from tbl_student group by Total_fee)
+			select * from tbl_student where Total_fee in (select total from fee where sr=2)
+
+
+with paidfee(user_id,paid) select user_id,sum(amount) as paid from fee_payment group by userid)
+select student.name, student.mobno,student.email_id,student.total_fee,
+case when paidfee,paid is null then o else paidfee.paid end as paid, student.total_fee-paidfee-paid as remaining
+from student left join paidfee on student.email_id=paidfee.user_id
+
+
+
+
+Update:-
+	updatecommand is used to change to pre-existing record update command is a dml command wich can be apply only fre-existing rows
+	 of table.
+	 
+	(update command to update a column value of every row)
+	 syntax:- update table_name set column_name=value;
+	 
+	 (update command to change any column value of select row):
+	 
+	syntax:-  update table_name set column_name=value where <condition>
+	 
+	 (update command to change multiple column value of select row):
+
+	syntax:- update table_name set column_name=value,column_name=value,....... column_name_n=value where <condition>
+
+
+
+Delete:-
+	delete command is use to remove pre-exsting rows from table. by using delete command you can not remove any column of row but the 
+	whole row will be deleted.
+	
+	Records deleted by delete command, does not deleted permanetly it can be restore by using rollback command.
+	
+	delete whithin condition, deletes all existing rows of table. to delete any specific row of table, conditions are applied with delete.
+	
+	
+	(delete all records)
+	syntax: delete from table_name:
+
+	delete any specific record where condition is true)
+	syntax: delete from table_name where <condition>
+
+
+
+
+
+select *from tbl_student
+update tbl_student set Mobno=null where sr=3
+update tbl_student set Mobno=73647585844 where sr=3
+
+update tbl_student set Total_fee=Total_fee+1000
+
+update tbl_student set Total_fee=(select max(Total_fee) from tbl_student),age=25 where name='priya soni'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+update student set column_name='' where sr=value
+
+
+
+
+
+Alter command:
+				alter is used to modify schema of table. if you want to make any changes in pre-existing structure of table then alter command is used.
+				Alter command is used to add. remove or modify columns in a pre-existing table.
+				
+				Alter command syntax to add a new column in table:-
+				Alter table table_name add column_defination;
+				
+				Example:-alter table patient_details add gender varchar(50)
+				alter table patient_details drop column column_name
+				alter table patient_details drop costraint costraint_id;
+				alter table patient_details alter discharge_date data_type;
+				
+Drop:-
+
+syntax:drop database database_name
+		drop table table_name
+		
+truncate:
+
+syntax:truncate table table_name;
+
+rollback: rollback command is used to only DML Command
+
+
+
+
+
+alter command to drop a column:-alter table table_name drop column column_name1,column_name2.........;
+
+example: alter table student drop column age,course;
+alter command to change definiition of a column:-
+alter table table_name alter column column_name new column_definition
+
+example:alter table student alter column reg_date data;
+
+
+
+
+TCL(transaction control  Language):
+tcl stands dor transaction control langauge.
+1. commit:commit is used to save transaction of sql permanlty. committed transaction of sql can not be rollback.
+In mssql ll transaction is auto-committed.
+If you want to do not auto-commit any transaction of sql "BEGIN Transaction" keyword is used.
+
+there are mainly 4 keywords used in TCL:
+1. BEGIN Transaction
+2. commit
+3. rollback
+4. savepoint
+--------------------------------------------------------------------
+
+tcl is mostly used with Insert,update,delete.
+
+BIGIN TRANSACTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
